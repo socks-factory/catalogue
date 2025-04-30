@@ -42,11 +42,5 @@ jobs:
         run: go mod download && go mod verify 
 
       - name: Build
-        run: ./scripts/build.sh
-
-      - name: Unit Test
-        run: ./test/test.sh unit.py
-
-      - name: Test Docker Image
-        run: ./test/test.sh container.py
+        run: make
 
