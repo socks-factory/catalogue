@@ -22,7 +22,7 @@ jobs:
       GROUP: weaveworksdemos
       COMMIT: ${{ github.sha }}
       REPO: catalogue
-      GO_VERSION: 2.3.0
+      GO_VERSION: 1.23.0
       GOPATH: /home/runner/work/catalogue/catalogue/go
 
     steps:
