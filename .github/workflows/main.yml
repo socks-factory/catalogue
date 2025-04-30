@@ -22,7 +22,7 @@ jobs:
       GROUP: weaveworksdemos
       COMMIT: ${{ github.sha }}
       REPO: catalogue
-      GO_VERSION: 1.7.5
+      GO_VERSION: 2.3.0
       GOPATH: /home/runner/work/catalogue/catalogue/go
 
     steps:
@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 1
           path: go/src/github.com/microservices-demo/catalogue
 
-      - uses: actions/setup-go@v1
+      - uses: actions/setup-go@v5
         with:
           go-version: ${{ env.GO_VERSION }}
 
