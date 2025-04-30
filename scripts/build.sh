@@ -43,7 +43,7 @@ $DOCKER_CMD build \
   --build-arg BUILD_DATE=$BUILD_DATE \
   --build-arg COMMIT=$COMMIT \
   -t ${REPO}:${COMMIT} \
-  -f $BUILD_DIR/docker/catalogue/Dockerfile $BUILD_DIR/docker/catalogue;
+  -f $BUILD_DIR/Dockerfile $BUILD_DIR;
 
 $DOCKER_CMD build \
   -t ${REPO}-db:${COMMIT} \
