@@ -93,7 +93,7 @@ func main() {
 				logger.Log("err", err)
 				os.Exit(1)
 			}
-			endpoint, err := zipkingo.NewEndpoint("user", localAddr.String())
+			endpoint, err := zipkingo.NewEndpoint("catalogue", localAddr.String())
 			if err != nil {
 				logger.Log("unable to create local endpoint: %+v\n", err)
 				os.Exit(1)
