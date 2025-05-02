@@ -11,7 +11,7 @@ RUN make
 
 FROM scratch
 
-COPY --from=build /app/catalogue /user
+COPY --from=build /app/catalogue /catalogue
 
 LABEL org.label-schema.vendor="SUSE" \
   org.label-schema.build-date="${BUILD_DATE}" \
@@ -24,5 +24,5 @@ LABEL org.label-schema.vendor="SUSE" \
   org.label-schema.schema-version="1.0"
 
 EXPOSE 8080
-CMD ["/user", "-port=8080"]
+CMD ["/catalogue", "-port=8080"]
 
