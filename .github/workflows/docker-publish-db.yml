@@ -73,7 +73,6 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=schedule
-            type=ref,event=branch
             type=ref,event=pr
             type=sha
 
