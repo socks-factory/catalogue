@@ -1,4 +1,4 @@
-name: Docker
+name: Docker DB build
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -19,7 +19,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: socks-factory/catalogue-db
 
 
 jobs:
@@ -77,17 +77,15 @@ jobs:
             type=ref,event=pr
             type=sha
 
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
-      - name: Build and push Docker image
-        id: build-and-push
+      - name: Build and push Docker db image
+        id: build-and-push-db
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: docker/catalogue-db
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ steps.meta.outputs.tags }}
-            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}-db:latest
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -107,4 +105,5 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+
 
